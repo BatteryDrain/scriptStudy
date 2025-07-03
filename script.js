@@ -1,5 +1,5 @@
 const textarea = document.getElementById('script');
-const dump = document.getElementById('dump');
+// const dump = document.getElementById('dump');
 
 textarea.addEventListener('input', () => {
     textarea.style.height = 'auto';
@@ -8,5 +8,11 @@ textarea.addEventListener('input', () => {
 })
 
 function dump(){
-    
+
 }
+
+submitB.addEventListener('click', () =>{
+    console.log("sibmitted");
+    // gotoLink(study.html);
+    window.location.href = "study.html";
+})
