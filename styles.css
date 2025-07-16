@@ -31,3 +31,8 @@
    border-radius: 15px;
    padding: 2px;
  }
+ #out {
+   background-color: transparent;
+   overflow: hidden;
+   border: transparent;
+ }

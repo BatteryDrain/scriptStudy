@@ -1,18 +1,16 @@
-const textarea = document.getElementById('script');
-// const dump = document.getElementById('dump');
+SCRIPT = null;
 
-textarea.addEventListener('input', () => {
-    textarea.style.height = 'auto';
-    textarea.style.height = textarea.scrollHeight + 'px';
-    console.log("got it!");
-})
-
-function dump(){
-
-}
+console.log("index");
 
 submitB.addEventListener('click', () =>{
     console.log("sibmitted");
-    // gotoLink(study.html);
     window.location.href = "study.html";
-})
+});
+
+script.addEventListener('input', () => {
+    script.style.height = 'auto';
+    script.style.height = script.scrollHeight + 'px';
+    SCRIPT = script.value;
+    // console.log(SCRIPT);
+    window.localStorage.setItem("script",SCRIPT);
+});
