@@ -10,8 +10,9 @@
  }
 
  body {
-    margin:0;
-    font-family: "Mulish", Arial, sans-serif;
+   margin:0;
+   margin-left: 10px;
+   font-family: "Mulish", Arial, sans-serif;
  }
 
  #input {
