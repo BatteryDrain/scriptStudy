@@ -1,7 +1,7 @@
 SCRIPT = window.localStorage.getItem("script");
 console.log(SCRIPT);
 LINES = SCRIPT.split("\n");
-VERSIONS = [];
+VERSIONS = [[]];
 VERSIONS.push(SCRIPT);
 list();
 
