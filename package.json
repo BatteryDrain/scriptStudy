@@ -1,0 +1,17 @@
+{
+  "name": "scriptstudy",
+  "version": "1.0.0",
+  "description": "Scriptless app for studying your script",
+  "main": "script.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "Script"
+  ],
+  "author": "Design Studio Group 4 spring 2025",
+  "license": "ISC",
+  "dependencies": {
+    "@elevenlabs/elevenlabs-js": "^2.7.0"
+  }
+}
