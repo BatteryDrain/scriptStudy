@@ -10,6 +10,8 @@ CWords = [
     "or",
 ]
 PRIORITIES = [];
+
+
 list();
 
 
@@ -44,22 +46,26 @@ function list(){
     }
     VERSION[0] = SCRIPT;
     VERSIONS.push(VERSION);
+    updown.max = VERSIONS[1].length - 1;
 }
 
-up.addEventListener('click', () => {
-    if(VERSIONNUM < VERSIONS[1].length - 1){
-        VERSIONNUM++;
-    }
-    setVersionNumber(VERSIONNUM);
-    setTimeout();
-});
+// up.addEventListener('click', () => {
+//     if(VERSIONNUM < VERSIONS[1].length - 1){
+//         VERSIONNUM++;
+//     }
+//     setVersionNumber(VERSIONNUM);
+// });
 
-down.addEventListener('click', () => {
-    if(VERSIONNUM > 0){
-        VERSIONNUM--;
-    }
+// down.addEventListener('click', () => {
+//     if(VERSIONNUM > 0){
+//         VERSIONNUM--;
+//     }
+//     setVersionNumber(VERSIONNUM);
+// });
+
+updown.addEventListener('change', () => {
+    VERSIONNUM = updown.value;
     setVersionNumber(VERSIONNUM);
-    setTimeout();
 });
 
 function setVersionNumber(number){
@@ -67,10 +73,13 @@ function setVersionNumber(number){
         ver.innerHTML = "original";
     }
     else{
-        ver.innerHTML = "version "+VERSIONNUM;
+        ver.innerHTML = "version " + VERSIONNUM;
     }
+    setOut();
 }
 
 function setOut(){
+    for(i = 0; i < SCRIPT.length; i++){
     
+    }
 }
