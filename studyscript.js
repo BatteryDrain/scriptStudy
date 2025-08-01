@@ -84,25 +84,23 @@ function setOut(){
 }
 
 function makeV() {
-    const baseWords = SCRIPT.split(" ");
+    const baseWords = SCRIPT.split(/(\s+)/); // Keeps spaces & line breaks
     const blankableIndexes = [];
 
-    // Find indexes of words that can be blanked
     for (let i = 0; i < baseWords.length; i++) {
-        const word = baseWords[i].toLowerCase();
-        if (!CWords.includes(word) && word !== "") {
+        const word = baseWords[i];
+        // Only blank actual words, not spaces/newlines
+        if (!CWords.includes(word.toLowerCase()) && !word.match(/^\s+$/)) {
             blankableIndexes.push(i);
         }
     }
 
-    // Shuffle the indexes for random blanking order
     shuffleArray(blankableIndexes);
 
     // Version 0: original
     const version0 = [SCRIPT, ...baseWords];
     VERSIONS = [version0];
 
-    // Progressive versions
     const blankedIndexes = new Set();
 
     for (let i = 0; i < blankableIndexes.length; i++) {
@@ -111,14 +109,14 @@ function makeV() {
 
         for (const idx of blankedIndexes) {
             versionWords[idx] = "■".repeat(baseWords[idx].length);
-
         }
 
-        const versionText = versionWords.join(" ");
+        const versionText = versionWords.join("");
         const version = [versionText, ...versionWords];
         VERSIONS.push(version);
     }
 }
+
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
