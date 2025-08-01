@@ -7,11 +7,6 @@ properSize();
 
 console.log("index");
 
-submitB.addEventListener('click', () =>{
-    console.log("sibmitted");
-    window.location.href = "study.html";
-});
-
 script.addEventListener('input', () => {
     properSize();
     SCRIPT = script.value;
