@@ -2,6 +2,10 @@
     box-sizing: border-box;
  }
 
+ h1 {
+   font-family: "PT Serif", serif;
+ }
+
  textarea {
     width:80vw;
     border-radius: 15px;
