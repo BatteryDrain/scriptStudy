@@ -27,14 +27,17 @@
  button {
       border-radius: 15px;
       border: 1px solid black;
+      background-color: #5C33F6;
+      color: white;
  }
 
  a {
    border: 1px solid black;
-   color: black;
    text-decoration: none;
    border-radius: 15px;
    padding: 2px;
+   background-color: #5C33F6;
+   color: white;
  }
  #out {
    background-color: transparent;
@@ -56,4 +59,15 @@
  #count button {
    height: 25px;
    width: 25px;
+   background-color: #5C33F6;
+   color: white;
+ }
+
+#script {
+   border: 1px solid #FF5C57;
+}
+
+input {
+   accent-color: #FF5C57;
+   background-color: #1E1E1E;
  }
