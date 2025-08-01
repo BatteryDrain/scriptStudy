@@ -1,4 +1,9 @@
-SCRIPT = null;
+SCRIPT = window.localStorage.getItem("script");
+
+script.textContent = SCRIPT;
+script.rows = SCRIPT.split("\n");
+properSize();
+
 
 console.log("index");
 
@@ -8,9 +13,13 @@ submitB.addEventListener('click', () =>{
 });
 
 script.addEventListener('input', () => {
-    script.style.height = 'auto';
-    script.style.height = script.scrollHeight + 'px';
+    properSize();
     SCRIPT = script.value;
     // console.log(SCRIPT);
     window.localStorage.setItem("script",SCRIPT);
 });
+
+function properSize(){
+    script.style.height = 'auto';
+    script.style.height = script.scrollHeight + 'px';
+}

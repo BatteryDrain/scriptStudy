@@ -20,7 +20,7 @@ para = document.createElement('textarea');
     para.id = "out";
     para.textContent = SCRIPT;
     para.disabled = true;
-    para.rows= LINES.length;
+    para.rows = LINES.length;
 dump.appendChild(para);
 
   
@@ -51,7 +51,7 @@ function list(){
 }
 
 up.addEventListener('click', () => {
-    if(VERSIONNUM < VERSIONS[1].length - 1){
+    if(VERSIONNUM < VERSIONS.length - 1){
         VERSIONNUM++;
     }
     setVersionNumber(VERSIONNUM);
@@ -77,6 +77,7 @@ function setVersionNumber(number){
         ver.innerHTML = "version " + VERSIONNUM;
     }
     setOut();
+    updown.value = VERSIONNUM
 }
 
 function setOut(){
