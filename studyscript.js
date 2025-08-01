@@ -33,7 +33,7 @@ function list(){
         if(temp[i] != CWords[0] && temp[i] != CWords[1] && temp[i] != ""){
             num = randomInt(1, temp.length);
             while(PRIORITIES.includes(num)){
-                num = randomInt(1, temp.length );
+                num = randomInt(1, temp.length);
             }
             PRIORITIES[i] = num;
         }
@@ -46,22 +46,23 @@ function list(){
     }
     VERSION[0] = SCRIPT;
     VERSIONS.push(VERSION);
-    updown.max = VERSIONS[1].length - 1;
+    makeV();
+    updown.max = VERSIONS.length - 1;
 }
 
-// up.addEventListener('click', () => {
-//     if(VERSIONNUM < VERSIONS[1].length - 1){
-//         VERSIONNUM++;
-//     }
-//     setVersionNumber(VERSIONNUM);
-// });
+up.addEventListener('click', () => {
+    if(VERSIONNUM < VERSIONS[1].length - 1){
+        VERSIONNUM++;
+    }
+    setVersionNumber(VERSIONNUM);
+});
 
-// down.addEventListener('click', () => {
-//     if(VERSIONNUM > 0){
-//         VERSIONNUM--;
-//     }
-//     setVersionNumber(VERSIONNUM);
-// });
+down.addEventListener('click', () => {
+    if(VERSIONNUM > 0){
+        VERSIONNUM--;
+    }
+    setVersionNumber(VERSIONNUM);
+});
 
 updown.addEventListener('change', () => {
     VERSIONNUM = updown.value;
@@ -79,7 +80,50 @@ function setVersionNumber(number){
 }
 
 function setOut(){
-    for(i = 0; i < SCRIPT.length; i++){
-    
+    para.textContent = VERSIONS[VERSIONNUM][0];
+}
+
+function makeV() {
+    const baseWords = SCRIPT.split(" ");
+    const blankableIndexes = [];
+
+    // Find indexes of words that can be blanked
+    for (let i = 0; i < baseWords.length; i++) {
+        const word = baseWords[i].toLowerCase();
+        if (!CWords.includes(word) && word !== "") {
+            blankableIndexes.push(i);
+        }
+    }
+
+    // Shuffle the indexes for random blanking order
+    shuffleArray(blankableIndexes);
+
+    // Version 0: original
+    const version0 = [SCRIPT, ...baseWords];
+    VERSIONS = [version0];
+
+    // Progressive versions
+    const blankedIndexes = new Set();
+
+    for (let i = 0; i < blankableIndexes.length; i++) {
+        const versionWords = [...baseWords];
+        blankedIndexes.add(blankableIndexes[i]);
+
+        for (const idx of blankedIndexes) {
+            versionWords[idx] = "■".repeat(baseWords[idx].length);
+
+        }
+
+        const versionText = versionWords.join(" ");
+        const version = [versionText, ...versionWords];
+        VERSIONS.push(version);
     }
 }
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
