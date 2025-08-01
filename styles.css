@@ -70,4 +70,14 @@
 input {
    accent-color: #FF5C57;
    background-color: #1E1E1E;
- }
+}
+
+::selection {
+   background-color: #FF5C57;
+   color: #ffffff;
+}
+ 
+::-moz-selection {
+   background-color: #FF5C57;
+   color: #ffffff;
+}
