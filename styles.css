@@ -84,3 +84,7 @@ background-color: #1E1E1E;
    background-color: #FF5C57;
    color: #ffffff;
 }
+
+.hide {
+   display: none;
+}
