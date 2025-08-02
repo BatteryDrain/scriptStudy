@@ -1,3 +1,4 @@
+
 script.textContent = SCRIPT;
 script.rows = SCRIPT.split("\n");
 properSize();
@@ -17,7 +18,7 @@ function properSize(){
 }
 
 
-SCRIPT = window.localStorage.getItem("script");
+SCRIPT = null;
 console.log(SCRIPT);
 LINES = SCRIPT.split("\n");
 VERSION = [];
