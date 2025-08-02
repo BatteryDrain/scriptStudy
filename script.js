@@ -18,20 +18,21 @@ function properSize(){
 }
 
 
-console.log(SCRIPT);
-LINES = SCRIPT.split("\n");
-VERSION = [];
-VERSIONS = [[]];
-VERSIONS[0].push(SCRIPT);
-VERSIONNUM = 0;
-CWords = [
-    "and",
-    "or",
-]
+
 PRIORITIES = [];
 
 submitb.addEventListener('click', () => {
     hideP();
+    console.log(SCRIPT);
+    LINES = SCRIPT.split("\n");
+    VERSION = [];
+    VERSIONS = [[]];
+    VERSIONS[0].push(SCRIPT);
+    VERSIONNUM = 0;
+    CWords = [
+        "and",
+        "or",
+    ]
     if(VERSIONS.length == 1){
         list();
         para = document.createElement('textarea');
@@ -43,6 +44,8 @@ submitb.addEventListener('click', () => {
         out.style.height = 'auto';
         out.style.height = out.scrollHeight + 'px';
     }
+
+    
 });
 
 backb.addEventListener('click', () => {
