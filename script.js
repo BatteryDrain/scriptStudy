@@ -1,5 +1,3 @@
-SCRIPT = window.localStorage.getItem("script");
-
 script.textContent = SCRIPT;
 script.rows = SCRIPT.split("\n");
 properSize();
@@ -11,7 +9,6 @@ script.addEventListener('input', () => {
     properSize();
     SCRIPT = script.value;
     // console.log(SCRIPT);
-    window.localStorage.setItem("script",SCRIPT);
 });
 
 function properSize(){
