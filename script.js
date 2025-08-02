@@ -1,5 +1,5 @@
 
-script.textContent = SCRIPT;
+SCRIPT = script.textContent;
 script.rows = SCRIPT.split("\n");
 properSize();
 
@@ -18,7 +18,6 @@ function properSize(){
 }
 
 
-SCRIPT = null;
 console.log(SCRIPT);
 LINES = SCRIPT.split("\n");
 VERSION = [];
