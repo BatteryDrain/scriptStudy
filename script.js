@@ -35,19 +35,18 @@ submitb.addEventListener('click', () => {
     if(VERSIONS.length == 1){
         list();
     }
+
+    para = document.createElement('textarea');
+        para.id = "out";
+        para.textContent = SCRIPT;
+        para.disabled = true;
+        para.rows = LINES.length;
+    dump.appendChild(para);
 });
 
 backb.addEventListener('click', () => {
     hideP();
 });
-
-
-para = document.createElement('textarea');
-    para.id = "out";
-    para.textContent = SCRIPT;
-    para.disabled = true;
-    para.rows = LINES.length;
-dump.appendChild(para);
 
   
 function list(){
