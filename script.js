@@ -1,3 +1,6 @@
+// form to handle text-to-speech requests
+const form = document.getElementById('tts-form');
+const audioPlayer = document.getElementById('audio-player');
 
 SCRIPT = script.textContent;
 script.rows = SCRIPT.split("\n");
@@ -169,3 +172,29 @@ function hideP(){
     down.classList.toggle("hide");
     ver.classList.toggle("hide");
 }
+
+// Handle form submission
+// This will send the text to the server for text-to-speech conversion
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const text = document.getElementById('out').textContent.trim();
+
+    const response = await fetch('/listen', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text }),
+    });
+
+    if (!response.ok) {
+    alert('Error with TTS');
+    return;
+    }
+
+    const audioBlob = await response.blob();
+    const audioUrl = URL.createObjectURL(audioBlob);
+
+    const player = document.getElementById('audio-player');
+    player.src = audioUrl;
+    player.play();
+});
