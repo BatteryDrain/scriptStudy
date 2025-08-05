@@ -3,6 +3,7 @@ const { Readable } = require('stream');
 
 const express = require('express');
 const path = require('path');
+const fs = require('fs'); // Optional, for debugging
 
 require('dotenv').config();
 
@@ -30,40 +31,46 @@ app.get('/', (req, res) => {
 
 app.use(express.json());
 
+// The /listen endpoint
 app.post('/listen', async (req, res) => {
   const { text } = req.body;
   if (!text) return res.status(400).send('Missing text');
+
+  // Use Rachel as a stable default voice
+  const voiceId = '21m00Tcm4TlvDq8ikWAM';
+  const modelId = 'eleven_multilingual_v2';
 
   const chunks = splitTextIntoChunks(text);
   const audioBuffers = [];
 
   try {
     for (const chunkText of chunks) {
-      console.log('Sending:', chunkText);
-      const audioStream = await elevenlabs.textToSpeech.stream('21m00Tcm4TlvDq8ikWAM', {
+      console.log('Sending chunk:', chunkText.length, chunkText);
+
+      const audioStream = await elevenlabs.textToSpeech.stream(voiceId, {
         text: chunkText,
-        modelId: 'eleven_multilingual_v2',
+        modelId: modelId,
       });
 
-      // const buffer = await streamToBuffer(audioStream);
-      // audioBuffers.push(buffer);
-      fs.writeFileSync('test_output.mp3', result.audio);
-
+      const buffer = await streamToBuffer(audioStream);
       console.log('Chunk audio buffer size:', buffer.length);
+      audioBuffers.push(buffer);
     }
 
-    // Send as single audio response
     const fullAudio = Buffer.concat(audioBuffers);
+
     res.setHeader('Content-Type', 'audio/mpeg');
     res.setHeader('Content-Length', fullAudio.length);
     res.send(fullAudio);
 
   } catch (err) {
-    console.error('Streaming error:', err);
-    res.status(500).send('Failed to stream audio');
+    console.error('Error during TTS:', err);
+    res.status(500).send('Text-to-speech failed');
   }
 });
 
+
+// Helper to split text into ~300 character chunks
 function splitTextIntoChunks(text, maxLength = 300) {
   const sentences = text.match(/[^\.!\?]+[\.!\?]+/g) || [text];
   const chunks = [];
@@ -79,7 +86,6 @@ function splitTextIntoChunks(text, maxLength = 300) {
   }
 
   if (current) chunks.push(current.trim());
-
   return chunks;
 }
 
@@ -95,18 +101,3 @@ async function streamToBuffer(readable) {
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
-
-voiceId = "21m00Tcm4TlvDq8ikWAM";
-
-async function textToSpeech(text) {
-  const audioStream = await elevenlabs.textToSpeech.stream(voiceId, {
-    text: "Simple text to speech example",
-    modelId: 'eleven_multilingual_v2',
-  });
-  // option 1: play the streamed audio locally
-  await stream(audioStream);
-  // option 2: process the audio manually
-  // for await (const chunk of audioStream) {
-  //   console.log(chunk);
-  // }
-}
