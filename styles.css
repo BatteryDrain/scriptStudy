@@ -99,3 +99,10 @@ header img {
    margin-left: auto;
 }
 
+@media screen and (max-width: 600px) {
+   header img {
+      width: 80vw;
+      height: 14vw;
+   }
+}
+
