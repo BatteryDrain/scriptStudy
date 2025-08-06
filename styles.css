@@ -89,3 +89,13 @@ background-color: #1E1E1E;
 .hide {
    display: none;
 }
+
+header {
+   display: flex;
+   flex-direction: row;
+}
+
+header img {
+   margin-left: auto;
+}
+
