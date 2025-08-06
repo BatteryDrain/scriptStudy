@@ -176,25 +176,32 @@ function hideP(){
 // Handle form submission
 // This will send the text to the server for text-to-speech conversion
 form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+    try {
+         e.preventDefault();
 
-    const text = document.getElementById('out').textContent.trim();
+        const text = document.getElementById('out').textContent.replace(/■/g, '').trim();
 
-    const response = await fetch('/listen', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text }),
-    });
+        const response = await fetch('/listen', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ text }),
+        });
 
-    if (!response.ok) {
-    alert('Error with TTS');
-    return;
+        if (!response.ok) {
+        alert('Error with TTS');
+        return;
+        }
+
+        const audioBlob = await response.blob();
+        const audioUrl = URL.createObjectURL(audioBlob);
+
+        const player = document.getElementById('audio-player');
+        player.src = audioUrl;
+        player.play();
+
+    } catch (error) {
+        console.error('Error during TTS request:', error);
+        alert('An error occurred while processing your request.');
     }
-
-    const audioBlob = await response.blob();
-    const audioUrl = URL.createObjectURL(audioBlob);
-
-    const player = document.getElementById('audio-player');
-    player.src = audioUrl;
-    player.play();
+   
 });
