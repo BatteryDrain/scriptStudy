@@ -18,6 +18,7 @@ body {
    margin:0;
    margin-left: 10px;
    font-family: "Mulish", Arial, sans-serif;
+   /* font-size:xx-large; */
 }
 
 #input {
@@ -30,6 +31,7 @@ button {
    border: 1px solid black;
    background-color: #5C33F6;
    color: white;
+   font-size: larger;
 }
 
 button:hover {
@@ -53,6 +55,7 @@ background-color:#FF5C57;
 background-color: transparent;
 overflow: hidden;
 border: transparent;
+font-size: larger;
 }
 
 #count {
@@ -97,12 +100,18 @@ header {
 
 header img {
    margin-left: auto;
+   /* filter: drop-shadow(18px 0px 8px black); */
+}
+
+#ver {
+   font-size: larger;
 }
 
 @media screen and (max-width: 600px) {
    header img {
       width: 50%;
       height: 50%;
+
    }
 }
 

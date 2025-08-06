@@ -53,6 +53,7 @@ submitb.addEventListener('click', () => {
 
 backb.addEventListener('click', () => {
     hideP();
+    SCRIPT = null;
 });
 
   
