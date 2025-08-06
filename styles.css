@@ -14,9 +14,10 @@ textarea {
 }
 
 body {
-margin:0;
-margin-left: 10px;
-font-family: "Mulish", Arial, sans-serif;
+   background-color: rgb(255, 244, 230);
+   margin:0;
+   margin-left: 10px;
+   font-family: "Mulish", Arial, sans-serif;
 }
 
 #input {
