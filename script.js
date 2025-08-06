@@ -22,6 +22,9 @@ function properSize(){
 PRIORITIES = [];
 
 submitb.addEventListener('click', () => {
+    if(script.textContent != SCRIPT){
+        console.log("not");
+    }
     hideP();
     console.log(SCRIPT);
     LINES = SCRIPT.split("\n");
@@ -32,17 +35,21 @@ submitb.addEventListener('click', () => {
     CWords = [
         "and",
         "or",
+        "but"
     ]
     if(VERSIONS.length == 1){
         list();
-        para = document.createElement('textarea');
-            para.id = "out";
-            para.textContent = SCRIPT;
-            para.disabled = true;
-            para.rows = LINES.length;
-        dump.appendChild(para);
+        // para = document.createElement('textarea');
+        //     para.id = "out";
+        //     para.textContent = SCRIPT;
+        //     para.disabled = true;
+        //     para.rows = LINES.length;
+        // dump.appendChild(para);
+        out.textContent = SCRIPT;
+        out.rows = LINES.length;
         out.style.height = 'auto';
         out.style.height = out.scrollHeight + 'px';
+
     }
 
     
@@ -163,10 +170,11 @@ function hideP(){
     script.classList.toggle("hide");
     ptitle.classList.toggle("hide");
     stitle.classList.toggle("hide");
-    dump.classList.toggle("hide");
+    // dump.classList.toggle("hide");
     count.classList.toggle("hide");
     updown.classList.toggle("hide");
     up.classList.toggle("hide");
     down.classList.toggle("hide");
     ver.classList.toggle("hide");
+    out.classList.toggle("hide");
 }
