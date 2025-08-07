@@ -39,12 +39,6 @@ submitb.addEventListener('click', () => {
     ]
     if(VERSIONS.length == 1){
         list();
-        // para = document.createElement('textarea');
-        //     para.id = "out";
-        //     para.textContent = SCRIPT;
-        //     para.disabled = true;
-        //     para.rows = LINES.length;
-        // dump.appendChild(para);
         out.textContent = SCRIPT;
         out.rows = LINES.length;
         out.style.height = 'auto';
@@ -118,7 +112,7 @@ function setVersionNumber(number){
 }
 
 function setOut(){
-    para.textContent = VERSIONS[VERSIONNUM][0];
+    out.textContent = VERSIONS[VERSIONNUM][0];
 }
 
 function makeV() {
